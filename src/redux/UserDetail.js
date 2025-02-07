@@ -6,7 +6,7 @@ const userDetailRedux = createSlice({
   initialState: {
     userId: "",
     verified: false,
-    selectedCategory: [],
+    selectedCategory: "",
     isFetching: false,
     error: null,
   },
@@ -20,9 +20,10 @@ const userDetailRedux = createSlice({
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.userId = action.payload._id;
         state.verified = action.payload.verified;
-        // state.selectedCategory.push(action.payload.selectedCategories);
+        state.selectedCategory = action.payload.selectedCategories.length;
         state.error = null;
       })
+      
       .addCase(fetchUser.rejected, (state, action) => {
         state.isFetching = false;
         state.error = action.payload || "An unexpected error occurred";

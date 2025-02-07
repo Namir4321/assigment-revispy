@@ -14,6 +14,7 @@ import FormContainer from "../Form/FormContainer";
 import FormInput from "../Form/FormInput";
 import SubmitButton from "../Form/SubmitButton";
 import { LoginAuthAction, RegisterAuthAction } from "@/lib/action";
+import { Link } from "react-router-dom";
 
 const AuthCardRegister = () => {
   return (
@@ -51,6 +52,12 @@ const AuthCardRegister = () => {
               variant="default"
             />
           </FormContainer>
+          <div className="mt-4 text-center text-sm">
+             Have an account?{" "}
+            <Link to="/login" className="uppercase font-semibold">
+              login
+            </Link>
+          </div>
         </CardContent>
       </Card>
     </div>

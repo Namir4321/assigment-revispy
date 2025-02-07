@@ -16,8 +16,13 @@ import { FaGripLines } from "react-icons/fa6";
 import NavButton from "../Navbar/NavButton";
 import NavIcon from "../Navbar/NavIcon";
 import NavLink from "../Navbar/NavLink";
+import { logoutuser } from "@/redux/userRedux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -30,9 +35,21 @@ const Sidebar = () => {
           <NavIcon />
         </SheetHeader>
         <NavLink />
-        {/* <SheetFooter className="bg-red-300 flex justify-start ">
-          Logout
-        </SheetFooter> */}
+        {user ? (
+          <SheetFooter className="bg-red-300  flex mt-5 md:mt-0 absolute">
+            <Button
+              onClick={() => {
+                dispatch(logoutuser());
+              }}
+            >
+              Logout
+            </Button>
+          </SheetFooter>
+        ) : (
+          <Link to="/login" className="mt-5">
+            <Button className="mt-5">LogIn</Button>
+          </Link>
+        )}
       </SheetContent>
     </Sheet>
   );

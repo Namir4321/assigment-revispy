@@ -17,6 +17,7 @@ import {
   LoginAuthAction,
 } from "@/lib/action";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 const AuthCardLogin = () => {
   const dispatch = useDispatch();
   const handleFormSubmit = (previousState, formData) => {
@@ -55,9 +56,9 @@ const AuthCardLogin = () => {
           </FormContainer>
           <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
-            <a href="#" className="uppercase font-semibold">
+            <Link to="/register" className="uppercase font-semibold">
               Sign Up
-            </a>
+            </Link>
           </div>
         </CardContent>
       </Card>
